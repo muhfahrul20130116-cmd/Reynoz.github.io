@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Reynoz SA-MP RP</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body{
+  margin:0;font-family:Arial,Helvetica,sans-serif;
+  background:#0b0f14;color:#fff
+}
+.hero{
+  height:100vh;
+  background:url("bg.jpg") center/cover no-repeat;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;
+}
+.overlay{
+  background:rgba(0,0,0,.65);
+  padding:50px;border-radius:20px;
+}
+.btn{
+  display:inline-block;margin:10px;
+  padding:14px 28px;border-radius:30px;
+  background:#00c6ff;color:#000;
+  text-decoration:none;font-weight:bold
+}
+.btn:hover{background:#7ee8fa}
+section{max-width:1000px;margin:auto;padding:40px}
+.card{
+  background:#141a22;
+  border-radius:16px;
+  padding:25px;margin-bottom:25px
+}
+.ip{font-size:22px;color:#00c6ff;font-weight:bold}
+.status{font-weight:bold}
+footer{text-align:center;opacity:.6;padding:20px}
+</style>
+
+</head>
+<body>
+
+<div class="hero">
+  <div class="overlay">
+    <h1>🔥 REYNOZ ROLEPLAY 🔥</h1>
+    <p>Indonesia • Serious RP • 24/7</p>
+    <a class="btn" href="samp://play.reynoz.my.id:7777">AUTO CONNECT</a>
+    <a class="btn" href="#info">INFO SERVER</a>
+  </div>
+</div>
+
+<section id="info">
+
+<div class="card">
+  <h2>📡 Informasi Server</h2>
+  <p>IP Server:</p>
+  <div class="ip">play.reynoz.my.id:7777</div>
+  <p>Status: <span class="status" id="srv">Checking...</span></p>
+  <p>Player Online: <span id="player">-</span></p>
+</div>
+
+<div class="card">
+  <h2>🎮 Cara Bermain</h2>
+  <ol>
+    <li>Install GTA San Andreas</li>
+    <li>Install SA-MP 0.3.7</li>
+    <li>Connect ke server</li>
+  </ol>
+  <a class="btn" href="#">DOWNLOAD GTA</a>
+</div>
+
+<div class="card">
+  <h2>📢 Fitur Utama</h2>
+  <ul>
+    <li>✔ Sistem RP Lengkap</li>
+    <li>✔ Mapping Custom</li>
+    <li>✔ Anti-Cheat</li>
+    <li>✔ Admin & Support Aktif</li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>🌐 Komunitas</h2>
+  <p>Discord: coming soon</p>
+  <p>WhatsApp: coming soon</p>
+</div>
+
+</section>
+
+<footer>© 2026 Reynoz SA-MP Roleplay</footer>
+
+<script>
+// STATUS SERVER (pakai API eksternal)
+fetch("https://api.sampquery.com/server/play.reynoz.my.id:7777")
+.then(r=>r.json())
+.then(d=>{
+  document.getElementById("srv").innerText = d.online ? "ONLINE 🟢" : "OFFLINE 🔴";
+  document.getElementById("player").innerText = d.players + " / " + d.maxplayers;
+})
+.catch(()=>{
+  document.getElementById("srv").innerText = "OFFLINE 🔴";
+});
+</script>
+
+</body>
+</html>
